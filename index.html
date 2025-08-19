@@ -428,33 +428,67 @@
         </div>
     </div>
     
-  <!-- 只展示修改的部分，完整文件结构保持不变 -->
+  <!-- 只展示修改的样式和按钮部分 -->
 <style>
-    /* 主题切换按钮动画优化 */
-    .theme-icon {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    /* 主题切换按钮优化 */
+    #themeToggle {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    #themeToggle {
-        transition: transform 0.2s ease;
+    .theme-icon {
+        position: absolute;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 太阳图标样式 */
+    .sun-icon {
+        color: #FBBF24;
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    
+    /* 月亮图标样式 */
+    .moon-icon {
+        color: #93C5FD;
+        opacity: 0;
+        transform: translate(0, 10px) rotate(-30deg);
+    }
+    
+    /* 深色模式下图标状态 */
+    .dark .sun-icon {
+        opacity: 0;
+        transform: translate(0, -10px) rotate(30deg);
+    }
+    
+    .dark .moon-icon {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg);
     }
 </style>
+
 <!-- 右下角悬浮元素组 -->
 <div class="fixed bottom-6 right-6 flex flex-col items-end gap-4 z-50">
     <!-- 主题切换按钮 -->
-    <button id="themeToggle" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center theme-transition relative hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-        <i class="fa fa-sun-o text-yellow-500 text-xl theme-icon sun-icon"></i>
-        <i class="fa fa-moon-o text-blue-400 text-xl theme-icon moon-icon"></i>
+    <button id="themeToggle" class="rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition theme-transition">
+        <i class="fa fa-sun-o text-xl theme-icon sun-icon"></i>
+        <i class="fa fa-moon-o text-xl theme-icon moon-icon"></i>
     </button>
     
     <!-- 返回顶部按钮 -->
     <button id="backToTop" class="w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
         <i class="fa fa-arrow-up"></i>
     </button>
+</div>
     
     <!-- JavaScript 文件 -->
     <script src="js/theme.js"></script>
@@ -462,4 +496,5 @@
     <script src="js/media.js"></script>
 </body>
 </html>
+
 
