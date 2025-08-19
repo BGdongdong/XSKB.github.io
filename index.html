@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind自定义颜色和字体
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        dark: '#1F2937',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+        }
+    </style>
+    <style>
+        /* 导入Inter字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 加载动画 */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- 主容器 -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+        <!-- 头部信息 -->
+        <header class="text-center mb-10 fade-in">
+            <!-- 头像 -->
+            <div class="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-md">
+                <img src="https://picsum.photos/id/64/200/200" alt="个人头像" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- 名称和标题 -->
+            <h1 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold text-gray-900 mb-2">于凤翔</h1>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto text-balance">汽车零部件销售专家 | 10年行业经验 | 专注优质汽车配件供应</p>
+            
+            <!-- 状态标签 -->
+            <div class="inline-flex items-center mt-4 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                在线咨询中
+            </div>
+        </header>
+        
+        <!-- 主要内容区 - 网格布局 -->
+        <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            <!-- 联系卡片 -->
+            <a href="tel:+8613800138000" class="bg-white rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 fade-in" style="animation-delay: 0.1s">
+                <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-primary">
+                    <i class="fa fa-phone text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold">电话咨询</h3>
+                    <p class="text-gray-500 text-sm">138-0013-8000</p>
+                </div>
+            </a>
+            
+            <!-- 微信卡片 -->
+            <div class="bg-white rounded-xl p-5 shadow-sm card-hover fade-in" style="animation-delay: 0.2s">
+                <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600 mb-4">
+                    <i class="fa fa-weixin text-xl"></i>
+                </div>
+                <h3 class="font-semibold mb-2">微信联系</h3>
+                <div class="bg-gray-100 p-2 inline-block rounded">
+                    <img src="https://picsum.photos/id/237/100/100" alt="微信二维码" class="w-32 h-32 object-cover">
+                </div>
+            </div>
+            
+            <!-- 产品目录卡片 -->
+            <a href="#products" class="bg-white rounded-xl p-5 shadow-sm card-hover fade-in" style="animation-delay: 0.3s">
+                <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+                    <i class="fa fa-cubes text-xl"></i>
+                </div>
+                <h3 class="font-semibold mb-2">产品目录</h3>
+                <p class="text-gray-500 text-sm">浏览我们的汽车零部件产品</p>
+            </a>
+            
+            <!-- 关于我们卡片 -->
+            <a href="#about" class="bg-white rounded-xl p-5 shadow-sm card-hover fade-in" style="animation-delay: 0.4s">
+                <div class="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 mb-4">
+                    <i class="fa fa-info-circle text-xl"></i>
+                </div>
+                <h3 class="font-semibold mb-2">关于我们</h3>
+                <p class="text-gray-500 text-sm">了解公司背景和服务优势</p>
+            </a>
+            
+            <!-- 视频介绍卡片 -->
+            <div class="bg-white rounded-xl p-5 shadow-sm card-hover fade-in" style="animation-delay: 0.5s">
+                <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center text-red-600 mb-4">
+                    <i class="fa fa-play-circle text-xl"></i>
+                </div>
+                <h3 class="font-semibold mb-2">产品介绍视频</h3>
+                <div class="relative rounded-lg overflow-hidden bg-gray-100 aspect-video mt-2">
+                    <!-- 视频封面 -->
+                    <img src="https://picsum.photos/id/111/400/225" alt="产品介绍视频封面" class="w-full h-full object-cover">
+                    <!-- 播放按钮 -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
+                            <i class="fa fa-play text-red-500 ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 客户评价卡片 -->
+            <a href="#testimonials" class="bg-white rounded-xl p-5 shadow-sm card-hover fade-in" style="animation-delay: 0.6s">
+                <div class="w-12 h-12 rounded-lg bg-teal-100 flex items-center justify-center text-teal-600 mb-4">
+                    <i class="fa fa-star text-xl"></i>
+                </div>
+                <h3 class="font-semibold mb-2">客户评价</h3>
+                <p class="text-gray-500 text-sm">查看合作伙伴的反馈</p>
+            </a>
+            
+            <!-- 配件展示GIF卡片 -->
+            <div class="bg-white rounded-xl p-5 shadow-sm card-hover col-span-1 sm:col-span-2 lg:col-span-3 fade-in" style="animation-delay: 0.7s">
+                <div class="flex flex-col md:flex-row gap-5">
+                    <div class="flex-1">
+                        <h3 class="font-semibold mb-2">优质配件展示</h3>
+                        <p class="text-gray-600 mb-4">我们提供的汽车零部件经过严格质量检测，确保安全可靠。以下是部分产品的细节展示：</p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><i class="fa fa-check-circle text-green-500 mr-2"></i> 原厂品质标准</li>
+                            <li class="flex items-center"><i class="fa fa-check-circle text-green-500 mr-2"></i> 全系列车型适配</li>
+                            <li class="flex items-center"><i class="fa fa-check-circle text-green-500 mr-2"></i> 完善的售后保障</li>
+                        </ul>
+                        <a href="#contact" class="inline-block mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition">
+                            立即咨询
+                        </a>
+                    </div>
+                    <div class="w-full md:w-64 h-64 rounded-lg overflow-hidden bg-gray-100">
+                        <!-- 这里可以放置产品GIF图片 -->
+                        <img src="https://picsum.photos/id/133/400/400" alt="汽车配件展示" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 产品展示区 -->
+        <section id="products" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">热门产品</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 产品1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1072/400/300" alt="刹车片" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">高性能刹车片</h3>
+                        <p class="text-gray-600 text-sm mt-1">适配多种车型，耐高温，磨损率低</p>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-medium">¥198起</span>
+                            <a href="#contact" class="text-sm text-blue-600 hover:underline">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 产品2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1071/400/300" alt="机油滤清器" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">机油滤清器</h3>
+                        <p class="text-gray-600 text-sm mt-1">高效过滤杂质，保护发动机</p>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-medium">¥58起</span>
+                            <a href="#contact" class="text-sm text-blue-600 hover:underline">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 产品3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1069/400/300" alt="火花塞" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">铱金火花塞</h3>
+                        <p class="text-gray-600 text-sm mt-1">点火效率高，延长使用寿命</p>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-medium">¥128起</span>
+                            <a href="#contact" class="text-sm text-blue-600 hover:underline">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#contact" class="inline-flex items-center px-5 py-2.5 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 transition">
+                    查看全部产品 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+        
+        <!-- 关于我们 -->
+        <section id="about" class="mb-16 bg-white rounded-2xl p-6 md:p-8 shadow-sm fade-in">
+            <h2 class="text-2xl font-bold mb-4">关于我们</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <p class="text-gray-700 mb-4">我们是一家专业的汽车零部件供应商，拥有10年行业经验，致力于为客户提供高品质、高性价比的汽车配件产品。</p>
+                    <p class="text-gray-700 mb-4">我们的产品覆盖发动机系统、制动系统、悬挂系统、电子电器等多个类别，与多家知名汽车制造商保持长期合作关系。</p>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-3xl font-bold text-primary">10+</span>
+                            <span class="text-gray-600 text-sm mt-1">行业经验</span>
+                        </div>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-3xl font-bold text-primary">500+</span>
+                            <span class="text-gray-600 text-sm mt-1">合作客户</span>
+                        </div>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-3xl font-bold text-primary">3000+</span>
+                            <span class="text-gray-600 text-sm mt-1">产品种类</span>
+                        </div>
+                        <div class="flex flex-col items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-3xl font-bold text-primary">98%</span>
+                            <span class="text-gray-600 text-sm mt-1">客户满意度</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-2">
+                    <img src="https://picsum.photos/id/1073/300/300" alt="公司仓库" class="rounded-lg h-40 object-cover">
+                    <img src="https://picsum.photos/id/1074/300/300" alt="产品展示" class="rounded-lg h-40 object-cover mt-6">
+                    <img src="https://picsum.photos/id/1075/300/300" alt="质检流程" class="rounded-lg h-40 object-cover">
+                    <img src="https://picsum.photos/id/1076/300/300" alt="团队照片" class="rounded-lg h-40 object-cover mt-6">
+                </div>
+            </div>
+        </section>
+        
+        <!-- 客户评价 -->
+        <section id="testimonials" class="mb-16 fade-in">
+            <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">客户评价</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 评价1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/id/1012/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">张经理 - 某汽车维修连锁</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"合作多年，他们的零部件质量稳定，供货及时，售后响应迅速，是我们非常信赖的合作伙伴。"</p>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/id/1005/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">李老板 - 汽车4S店</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"配件品类齐全，特别是进口车型的配件，价格比原厂有很大优势，客户反馈质量很好。"</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系我们 -->
+        <section id="contact" class="mb-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 md:p-8 fade-in">
+            <h2 class="text-2xl font-bold mb-6">联系我们</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-gray-700 mb-6">无论您有任何疑问或需求，都可以通过以下方式联系我们，我们将尽快回复您。</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">公司地址</h4>
+                                <p class="text-gray-600">上海市浦东新区XX路XX号汽车产业园A栋101室</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">联系电话</h4>
+                                <p class="text-gray-600">021-XXXXXXXX</p>
+                                <p class="text-gray-600">138-0013-8000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">电子邮箱</h4>
+                                <p class="text-gray-600">info@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary shrink-0 mt-1">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">工作时间</h4>
+                                <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
+                                <p class="text-gray-600">周六: 9:00 - 12:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">您的姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition" placeholder="请输入您的姓名">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">联系电话</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition" placeholder="请输入您的联系电话">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">咨询内容</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition" placeholder="请输入您的咨询内容"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white py-2.5 px-4 rounded-lg hover:bg-primary/90 transition">提交咨询</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 页脚 -->
+        <footer class="text-center text-gray-500 text-sm pb-8 fade-in">
+            <p>© 2023 汽车零部件销售中心. 保留所有权利.</p>
+            <div class="flex justify-center space-x-4 mt-3">
+                <a href="#" class="hover:text-primary transition"><i class="fa fa-weibo"></i></a>
+                <a href="#" class="hover:text-primary transition"><i class="fa fa-weixin"></i></a>
+                <a href="#" class="hover:text-primary transition"><i class="fa fa-youtube-play"></i></a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // 返回顶部按钮功能
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 为视频封面添加点击播放功能
+        document.querySelector('.relative.rounded-lg').addEventListener('click', function() {
+            // 这里可以替换为实际视频播放逻辑
+            alert('视频将在这里播放');
+        });
+        
+        // 表单提交处理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 这里可以添加表单提交逻辑
+            alert('咨询已提交，我们将尽快与您联系！');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
