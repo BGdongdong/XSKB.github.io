@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y.Fengxiang | Bento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // 配置Tailwind主题
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7C3AED', // 主色调：紫色
+                        secondary: '#EC4899', // 辅助色：粉色
+                        dark: {
+                            100: '#374151',
+                            200: '#1F2937',
+                            300: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-dark-300 text-gray-800 dark:text-gray-100 transition-colors duration-300 min-h-screen font-sans">
+    <!-- 页面容器 -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+        <!-- 头部个人信息 -->
+        <header class="text-center mb-8">
+            <!-- 头像 -->
+            <div class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-white dark:border-dark-200 shadow-md">
+                <img src="assets/images/avatar.jpg" alt="Y.Fengxiang" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- 名称和简介 -->
+            <h1 class="text-3xl font-bold mb-2">Y.Fengxiang</h1>
+            <p class="text-gray-600 dark:text-gray-300 max-w-md mx-auto">
+                这份爱隔山隔海，但山海皆可平 🌊⛰️
+            </p>
+            
+            <!-- 社交图标 -->
+            <div class="flex justify-center space-x-4 mt-6">
+                <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-all">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-all">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-all">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-200 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white transition-all">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+        </header>
+        
+        <!-- 链接卡片网格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <!-- 链接卡片1 -->
+            <a href="#" class="card bg-white dark:bg-dark-200 rounded-xl p-5 shadow-sm card-hover">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <i class="fa fa-apple text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">iOS 应用</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">我的iOS作品合集</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 链接卡片2 -->
+            <a href="#" class="card bg-white dark:bg-dark-200 rounded-xl p-5 shadow-sm card-hover">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 dark:text-pink-400">
+                        <i class="fa fa-image text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">精选壁纸</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">高质量壁纸分享</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 链接卡片3 -->
+            <a href="#" class="card bg-white dark:bg-dark-200 rounded-xl p-5 shadow-sm card-hover">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
+                        <i class="fa fa-music text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">音乐推荐</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">个人歌单分享</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 链接卡片4 -->
+            <a href="#" class="card bg-white dark:bg-dark-200 rounded-xl p-5 shadow-sm card-hover">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                        <i class="fa fa-file-text-o text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">文章博客</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">技术与生活分享</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 链接卡片5 -->
+            <a href="#" class="card bg-white dark:bg-dark-200 rounded-xl p-5 shadow-sm card-hover">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                        <i class="fa fa-cogs text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">工具集合</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">实用工具推荐</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 链接卡片6 -->
+            <a href="#" class="card bg-white dark:bg-dark-200 rounded-xl p-5 shadow-sm card-hover">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400">
+                        <i class="fa fa-envelope-o text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold">联系我</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">发送消息或邮件</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- 媒体展示区 -->
+        <div class="mb-8">
+            <h2 class="text-xl font-bold mb-4 text-center">作品展示</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- 图片1 -->
+                <div class="rounded-xl overflow-hidden shadow-sm card-hover">
+                    <img src="assets/images/works/work1.jpg" alt="作品展示1" class="w-full h-48 object-cover">
+                </div>
+                <!-- 图片2 -->
+                <div class="rounded-xl overflow-hidden shadow-sm card-hover">
+                    <img src="assets/images/works/work2.jpg" alt="作品展示2" class="w-full h-48 object-cover">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <footer class="text-center text-gray-500 dark:text-gray-400 text-sm pt-6 border-t border-gray-200 dark:border-dark-100">
+            <p>© 2023 Y.Fengxiang. 用 ❤️ 制作</p>
+        </footer>
+    </div>
+    
+    <!-- 主题切换按钮 -->
+    <button id="theme-toggle" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-white dark:bg-dark-200 shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-100 transition-all z-50">
+        <i class="fa fa-sun-o text-yellow-500 dark:hidden"></i>
+        <i class="fa fa-moon-o text-blue-400 hidden dark:block"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
