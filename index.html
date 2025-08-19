@@ -428,19 +428,33 @@
         </div>
     </div>
     
-    <!-- 右下角悬浮元素组 -->
-    <div class="fixed bottom-6 right-6 flex flex-col items-end gap-4 z-50">
-        <!-- 主题切换按钮 -->
-        <button id="themeToggle" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center theme-transition relative hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-            <i class="fa fa-sun-o text-yellow-500 text-xl theme-icon sun-icon"></i>
-            <i class="fa fa-moon-o text-blue-400 text-xl theme-icon moon-icon absolute"></i>
-        </button>
-        
-        <!-- 返回顶部按钮 -->
-        <button id="backToTop" class="w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
-            <i class="fa fa-arrow-up"></i>
-        </button>
-    </div>
+  <!-- 只展示修改的部分，完整文件结构保持不变 -->
+<style>
+    /* 主题切换按钮动画优化 */
+    .theme-icon {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    #themeToggle {
+        transition: transform 0.2s ease;
+    }
+</style>
+<!-- 右下角悬浮元素组 -->
+<div class="fixed bottom-6 right-6 flex flex-col items-end gap-4 z-50">
+    <!-- 主题切换按钮 -->
+    <button id="themeToggle" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center theme-transition relative hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+        <i class="fa fa-sun-o text-yellow-500 text-xl theme-icon sun-icon"></i>
+        <i class="fa fa-moon-o text-blue-400 text-xl theme-icon moon-icon"></i>
+    </button>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa fa-arrow-up"></i>
+    </button>
     
     <!-- JavaScript 文件 -->
     <script src="js/theme.js"></script>
@@ -448,3 +462,4 @@
     <script src="js/media.js"></script>
 </body>
 </html>
+
