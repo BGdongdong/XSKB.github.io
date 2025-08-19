@@ -1,502 +1,88 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y.Fengxiang - 个人主页</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        // 检查用户偏好的主题模式
-        const isDarkMode = localStorage.getItem('theme') === 'dark' || 
-                          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        
-        // 配置Tailwind自定义颜色和字体
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3B82F6',
-                        secondary: '#10B981',
-                        accent: '#8B5CF6',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .card-hover {
-                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-            }
-            .text-balance {
-                text-wrap: balance;
-            }
-            .theme-transition {
-                @apply transition-colors duration-300 ease-in-out;
-            }
-            .carousel-item {
-                @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-            }
-            .carousel-item.active {
-                @apply opacity-100;
-            }
-        }
-    </style>
-    <style>
-        /* 导入Inter字体 */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        /* 平滑滚动 */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* 加载动画 */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* 媒体容器悬停效果 */
-        .media-container {
-            @apply relative overflow-hidden rounded-lg;
-        }
-        
-        .media-overlay {
-            @apply absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center;
-        }
-        
-        .media-container:hover .media-overlay {
-            @apply opacity-100;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Y.Fengxiang</title>
+  <!-- 引入字体图标（可根据需要替换为其他图标库） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/> 
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 font-sans text-gray-800 dark:text-gray-100 theme-transition min-h-screen">
-    <!-- 主容器 -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
-        <!-- 左右分栏布局 -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- 左侧栏 - 个人信息和链接 -->
-            <div class="lg:col-span-1 space-y-8">
-                <!-- 1. 个人信息区 -->
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm fade-in theme-transition">
-                    <!-- 头像 -->
-                    <div class="relative w-36 h-36 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-md mx-auto mb-6">
-                        <img src="assets/images/avatar.jpg" alt="个人头像" class="w-full h-full object-cover">
-                    </div>
-                    
-                    <!-- 个人信息 -->
-                    <div class="text-center">
-                        <h1 class="text-[clamp(1.5rem,5vw,2rem)] font-bold text-gray-900 dark:text-white mb-2">Y.Fengxiang</h1>
-                        <p class="text-gray-600 dark:text-gray-300 text-balance">
-                            "This love separates mountains and oceans, but mountains and oceans can be leveled."
-                        </p>
-                        <p class="text-gray-500 dark:text-gray-400 mt-2">这份爱隔山隔海，但山海皆可平 🌊⛰️</p>
-                        
-                        <!-- 社交图标区域 -->
-                        <div class="flex justify-center space-x-4 mt-6">
-                            <a href="https://github.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
-                                <i class="fa fa-github text-xl"></i>
-                            </a>
-                            <a href="https://twitter.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
-                                <i class="fa fa-twitter text-xl"></i>
-                            </a>
-                            <a href="https://instagram.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
-                                <i class="fa fa-instagram text-xl"></i>
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
-                                <i class="fa fa-linkedin text-xl"></i>
-                            </a>
-                        </div>
-                        
-                        <!-- 状态标签 -->
-                        <div class="inline-flex items-center mt-4 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm theme-transition">
-                            <i class="fa fa-star mr-2"></i>
-                            持续更新中
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2. 链接区 - 网格布局 -->
-                <div class="grid grid-cols-1 gap-4 fade-in" style="animation-delay: 0.2s">
-                    <!-- 链接卡片1 -->
-                    <a href="#" class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 theme-transition">
-                        <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 theme-transition">
-                            <i class="fa fa-apple text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">iOS 应用</h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">我的iOS作品合集</p>
-                        </div>
-                    </a>
-                    
-                    <!-- 链接卡片2 -->
-                    <a href="#" class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 theme-transition">
-                        <div class="w-12 h-12 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 dark:text-pink-400 theme-transition">
-                            <i class="fa fa-image text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">riph 的壁纸</h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">精选壁纸分享</p>
-                        </div>
-                    </a>
-                    
-                    <!-- 链接卡片3 -->
-                    <a href="https://bento.me/yufengxiang" target="_blank" class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 theme-transition">
-                        <div class="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 theme-transition">
-                            <i class="fa fa-link text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">bento.me</h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">我的官方主页</p>
-                        </div>
-                    </a>
-                    
-                    <!-- 链接卡片4 -->
-                    <a href="#" class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 theme-transition">
-                        <div class="w-12 h-12 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400 theme-transition">
-                            <i class="fa fa-database text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">数据资源</h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">精选数据集合</p>
-                        </div>
-                    </a>
-                    
-                    <!-- 链接卡片5 -->
-                    <a href="#" class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 theme-transition">
-                        <div class="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 theme-transition">
-                            <i class="fa fa-cogs text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">我的应用程序</h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">实用工具合集</p>
-                        </div>
-                    </a>
-                    
-                    <!-- 链接卡片6 -->
-                    <a href="#" class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm card-hover flex items-center space-x-4 theme-transition">
-                        <div class="w-12 h-12 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 dark:text-teal-400 theme-transition">
-                            <i class="fa fa-map-o text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold">无代码地图集</h3>
-                            <p class="text-gray-500 dark:text-gray-400 text-sm">无代码资源导航</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- 数据统计 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.4s">
-                    <h3 class="font-semibold text-lg mb-4">数据统计</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center theme-transition">
-                            <div class="text-3xl font-bold text-primary mb-1">24</div>
-                            <div class="text-gray-600 dark:text-gray-300 text-sm">应用程序</div>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center theme-transition">
-                            <div class="text-3xl font-bold text-primary mb-1">1.2k</div>
-                            <div class="text-gray-600 dark:text-gray-300 text-sm">壁纸下载</div>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center theme-transition">
-                            <div class="text-3xl font-bold text-primary mb-1">36</div>
-                            <div class="text-gray-600 dark:text-gray-300 text-sm">数据资源</div>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center theme-transition">
-                            <div class="text-3xl font-bold text-primary mb-1">58k</div>
-                            <div class="text-gray-600 dark:text-gray-300 text-sm">访问量</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 右侧栏 - 内容展示区 -->
-            <div class="lg:col-span-2 space-y-8">
-                <!-- 1. 图片轮播区域 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.3s">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold">精选作品展示</h2>
-                        <div class="flex space-x-2">
-                            <button id="carouselPrev" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition">
-                                <i class="fa fa-chevron-left text-sm"></i>
-                            </button>
-                            <button id="carouselNext" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition">
-                                <i class="fa fa-chevron-right text-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                   <!-- 轮播图区域修复 -->
-<div id="carousel" class="relative w-full h-64 md:h-80 overflow-hidden rounded-lg">
-    <div class="carousel-item active">
-        <img src="assets/images/carousel/image1.jpg" alt="轮播图片1" class="w-full h-full object-cover">
-    </div>
-    <div class="carousel-item">
-        <img src="assets/images/carousel/image2.jpg" alt="轮播图片2" class="w-full h-full object-cover">
-    </div>
-    <div class="carousel-item">
-        <img src="assets/images/carousel/image3.jpg" alt="轮播图片3" class="w-full h-full object-cover">
-    </div>
-    <div class="carousel-item">
-        <img src="assets/images/carousel/image4.jpg" alt="轮播图片4" class="w-full h-full object-cover">
-    </div>
-    
-    <!-- 轮播指示器 -->
-    <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-100" data-index="0"></button>
-        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="1"></button>
-        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="2"></button>
-        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="3"></button>
-    </div>
-</div>
-                </div>
-                
-                <!-- 2. 音乐播放列表 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.4s">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold">「便当分享」歌单</h2>
-                        <span class="text-gray-500 dark:text-gray-400 text-sm">6首歌曲</span>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <!-- 歌曲1 -->
-                        <div class="flex items-center p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition theme-transition">
-                            <img src="assets/images/albums/album1.jpg" alt="小幸运专辑封面" class="w-12 h-12 rounded object-cover">
-                            <div class="ml-4 flex-1">
-                                <h3 class="font-medium">小幸运</h3>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">田馥甄</p>
-                            </div>
-                            <div class="text-gray-400 dark:text-gray-500 text-sm">3:53</div>
-                            <button class="ml-4 text-primary hover:text-primary/80">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 歌曲2 -->
-                        <div class="flex items-center p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition theme-transition">
-                            <img src="assets/images/albums/album2.jpg" alt="七里香专辑封面" class="w-12 h-12 rounded object-cover">
-                            <div class="ml-4 flex-1">
-                                <h3 class="font-medium">七里香</h3>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">周杰伦</p>
-                            </div>
-                            <div class="text-gray-400 dark:text-gray-500 text-sm">4:57</div>
-                            <button class="ml-4 text-primary hover:text-primary/80">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 歌曲3 -->
-                        <div class="flex items-center p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition theme-transition">
-                            <img src="assets/images/albums/album3.jpg" alt="后来专辑封面" class="w-12 h-12 rounded object-cover">
-                            <div class="ml-4 flex-1">
-                                <h3 class="font-medium">后来</h3>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">刘若英</p>
-                            </div>
-                            <div class="text-gray-400 dark:text-gray-500 text-sm">5:04</div>
-                            <button class="ml-4 text-primary hover:text-primary/80">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 歌曲4 -->
-                        <div class="flex items-center p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition theme-transition">
-                            <img src="assets/images/albums/album4.jpg" alt="这世界那么多人专辑封面" class="w-12 h-12 rounded object-cover">
-                            <div class="ml-4 flex-1">
-                                <h3 class="font-medium">这世界那么多人</h3>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">莫文蔚</p>
-                            </div>
-                            <div class="text-gray-400 dark:text-gray-500 text-sm">4:25</div>
-                            <button class="ml-4 text-primary hover:text-primary/80">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 3. GIF展示区域 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.5s">
-                    <h2 class="text-xl font-bold mb-4">动态壁纸展示</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="media-container card-hover">
-                            <img src="assets/gifs/wallpaper1.gif" alt="动态壁纸1" class="w-full h-auto">
-                            <div class="media-overlay">
-                                <button class="text-white bg-primary/80 hover:bg-primary px-3 py-1 rounded-full text-sm transition">
-                                    <i class="fa fa-download mr-1"></i> 下载
-                                </button>
-                            </div>
-                        </div>
-                        <div class="media-container card-hover">
-                            <img src="assets/gifs/wallpaper2.gif" alt="动态壁纸2" class="w-full h-auto">
-                            <div class="media-overlay">
-                                <button class="text-white bg-primary/80 hover:bg-primary px-3 py-1 rounded-full text-sm transition">
-                                    <i class="fa fa-download mr-1"></i> 下载
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="mt-4 text-primary hover:text-primary/80 text-sm flex items-center">
-                        查看更多 <i class="fa fa-arrow-right ml-1"></i>
-                    </button>
-                </div>
-                
-                <!-- 视频展示区域修复 -->
-<div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.6s">
-    <h2 class="text-xl font-bold mb-4">应用演示视频</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="media-container card-hover aspect-video">
-            <video class="w-full h-full object-cover" poster="assets/images/video-thumbnails/thumbnail1.jpg" controls>
-                <source src="assets/videos/app-demo1.mp4" type="video/mp4">
-                您的浏览器不支持视频标签。请更新浏览器或使用其他浏览器观看。
-            </video>
-            <div class="media-overlay">
-                <button class="play-video text-white bg-primary/80 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition">
-                    <i class="fa fa-play"></i>
-                </button>
-            </div>
-        </div>
-        <div class="media-container card-hover aspect-video">
-            <video class="w-full h-full object-cover" poster="assets/images/video-thumbnails/thumbnail2.jpg" controls>
-                <source src="assets/videos/app-demo1.mp4" type="video/mp4">
-                您的浏览器不支持视频标签。请更新浏览器或使用其他浏览器观看。
-            </video>
-            <div class="media-overlay">
-                <button class="play-video text-white bg-primary/80 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition">
-                    <i class="fa fa-play"></i>
-                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 5. 最新动态 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.7s">
-                    <h3 class="font-semibold text-lg mb-4">最新动态</h3>
-                    <div class="space-y-4">
-                        <div class="flex">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
-                            <div>
-                                <p class="text-gray-700 dark:text-gray-300">新的iOS应用已发布</p>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">2天前</p>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
-                            <div>
-                                <p class="text-gray-700 dark:text-gray-300">新增20张精选壁纸</p>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">1周前</p>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
-                            <div>
-                                <p class="text-gray-700 dark:text-gray-300">数据资源库更新</p>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">2周前</p>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
-                            <div>
-                                <p class="text-gray-700 dark:text-gray-300">「便当分享」歌单更新</p>
-                                <p class="text-gray-500 dark:text-gray-400 text-sm">3周前</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 页脚 -->
-                <footer class="text-center text-gray-500 dark:text-gray-400 text-sm pb-8 fade-in theme-transition" style="animation-delay: 0.8s">
-                    <p>© 2023 Y.Fengxiang. All rights reserved.</p>
-                    <div class="flex justify-center space-x-4 mt-3">
-                        <a href="#" class="hover:text-primary transition"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fa fa-instagram"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fa fa-github"></i></a>
-                        <a href="#" class="hover:text-primary transition"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-    
-  <!-- 只展示修改的样式和按钮部分 -->
-<style>
-    /* 主题切换按钮优化 */
-    #themeToggle {
-        position: relative;
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .theme-icon {
-        position: absolute;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    /* 太阳图标样式 */
-    .sun-icon {
-        color: #FBBF24;
-        opacity: 1;
-        transform: translate(0, 0) rotate(0deg);
-    }
-    
-    /* 月亮图标样式 */
-    .moon-icon {
-        color: #93C5FD;
-        opacity: 0;
-        transform: translate(0, 10px) rotate(-30deg);
-    }
-    
-    /* 深色模式下图标状态 */
-    .dark .sun-icon {
-        opacity: 0;
-        transform: translate(0, -10px) rotate(30deg);
-    }
-    
-    .dark .moon-icon {
-        opacity: 1;
-        transform: translate(0, 0) rotate(0deg);
-    }
-</style>
+<body>
+  <!-- 页面主容器 -->
+  <div class="container">
+    <!-- 左侧信息区 -->
+    <aside class="sidebar">
+      <!-- 头像 -->
+      <div class="avatar-box">
+        <img 
+          src="assets/images/avatar.jpg" 
+          alt="头像" 
+          class="avatar"
+        />
+      </div>
+      <!-- 名称与文案 -->
+      <h1 class="name">Y.Fengxiang</h1>
+      <p class="bio">
+        This love separates mountains and oceans, but mountains and oceans can be leveled. <br/>
+        这份爱隔山隔海，但山海皆可平 🌊⛰️
+      </p>
+      <!-- 社交图标（可按需增删） -->
+      <div class="social-icons">
+        <a href="https://github.com" target="_blank" class="icon">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </aside>
 
-<!-- 右下角悬浮元素组 -->
-<div class="fixed bottom-6 right-6 flex flex-col items-end gap-4 z-50">
-    <!-- 主题切换按钮 -->
-    <button id="themeToggle" class="rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition theme-transition">
-        <i class="fa fa-sun-o text-xl theme-icon sun-icon"></i>
-        <i class="fa fa-moon-o text-xl theme-icon moon-icon"></i>
-    </button>
-    
-    <!-- 返回顶部按钮 -->
-    <button id="backToTop" class="w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
-        <i class="fa fa-arrow-up"></i>
-    </button>
-</div>
-    
-    <!-- JavaScript 文件 -->
-    <script src="js/theme.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/media.js"></script>
+    <!-- 右侧内容区 -->
+    <main class="content">
+      <!-- 图片轮播（无标题） -->
+      <div class="carousel">
+        <!-- 轮播项 -->
+        <div class="carousel-item">
+          <img src="assets/images/carousel/1.jpg" alt="轮播图1"/>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/images/carousel/2.jpg" alt="轮播图2"/>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/images/carousel/3.jpg" alt="轮播图3"/>
+        </div>
+        <!-- 轮播控制按钮 -->
+        <button class="carousel-btn prev" id="prevBtn">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" id="nextBtn">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- 视频展示区（新样式） -->
+      <div class="video-section">
+        <div class="video-card">
+          <video controls>
+            <source src="assets/videos/demo.mp4" type="video/mp4"/>
+            您的浏览器不支持视频播放
+          </video>
+        </div>
+        <div class="video-card">
+          <video controls>
+            <source src="assets/videos/showcase.mp4" type="video/mp4"/>
+            您的浏览器不支持视频播放
+          </video>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 脚本文件 -->
+  <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
