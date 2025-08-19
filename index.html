@@ -238,28 +238,29 @@
                         </div>
                     </div>
                     
-                    <div id="carousel" class="relative w-full h-64 md:h-80 overflow-hidden rounded-lg">
-                        <div class="carousel-item active">
-                            <img src="assets/images/carousel/image1.jpg" alt="轮播图片1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/images/carousel/image2.jpg" alt="轮播图片2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/images/carousel/image3.jpg" alt="轮播图片3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/images/carousel/image4.jpg" alt="轮播图片4" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- 轮播指示器 -->
-                        <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-                            <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-100" data-index="0"></button>
-                            <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="1"></button>
-                            <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="2"></button>
-                            <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="3"></button>
-                        </div>
-                    </div>
+                   <!-- 轮播图区域修复 -->
+<div id="carousel" class="relative w-full h-64 md:h-80 overflow-hidden rounded-lg">
+    <div class="carousel-item active">
+        <img src="assets/images/carousel/image1.jpg" alt="轮播图片1" class="w-full h-full object-cover">
+    </div>
+    <div class="carousel-item">
+        <img src="assets/images/carousel/image2.jpg" alt="轮播图片2" class="w-full h-full object-cover">
+    </div>
+    <div class="carousel-item">
+        <img src="assets/images/carousel/image3.jpg" alt="轮播图片3" class="w-full h-full object-cover">
+    </div>
+    <div class="carousel-item">
+        <img src="assets/images/carousel/image4.jpg" alt="轮播图片4" class="w-full h-full object-cover">
+    </div>
+    
+    <!-- 轮播指示器 -->
+    <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-100" data-index="0"></button>
+        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="1"></button>
+        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="2"></button>
+        <button class="carousel-indicator w-2 h-2 rounded-full bg-white opacity-50" data-index="3"></button>
+    </div>
+</div>
                 </div>
                 
                 <!-- 2. 音乐播放列表 -->
@@ -350,30 +351,30 @@
                     </button>
                 </div>
                 
-                <!-- 4. 视频展示区域 -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.6s">
-                    <h2 class="text-xl font-bold mb-4">应用演示视频</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="media-container card-hover aspect-video">
-                            <video class="w-full h-full object-cover" poster="assets/images/video-thumbnails/thumbnail1.jpg">
-                                <source src="assets/videos/app-demo1.mp4" type="video/mp4">
-                                您的浏览器不支持视频标签。
-                            </video>
-                            <div class="media-overlay">
-                                <button class="play-video text-white bg-primary/80 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition">
-                                    <i class="fa fa-play"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="media-container card-hover aspect-video">
-                            <video class="w-full h-full object-cover" poster="assets/images/video-thumbnails/thumbnail2.jpg">
-                                <source src="assets/videos/app-demo2.mp4" type="video/mp4">
-                                您的浏览器不支持视频标签。
-                            </video>
-                            <div class="media-overlay">
-                                <button class="play-video text-white bg-primary/80 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition">
-                                    <i class="fa fa-play"></i>
-                                </button>
+                <!-- 视频展示区域修复 -->
+<div class="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm fade-in theme-transition" style="animation-delay: 0.6s">
+    <h2 class="text-xl font-bold mb-4">应用演示视频</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="media-container card-hover aspect-video">
+            <video class="w-full h-full object-cover" poster="assets/images/video-thumbnails/thumbnail1.jpg" controls>
+                <source src="assets/videos/app-demo1.mp4" type="video/mp4">
+                您的浏览器不支持视频标签。请更新浏览器或使用其他浏览器观看。
+            </video>
+            <div class="media-overlay">
+                <button class="play-video text-white bg-primary/80 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition">
+                    <i class="fa fa-play"></i>
+                </button>
+            </div>
+        </div>
+        <div class="media-container card-hover aspect-video">
+            <video class="w-full h-full object-cover" poster="assets/images/video-thumbnails/thumbnail2.jpg" controls>
+                <source src="assets/videos/app-demo1.mp4" type="video/mp4">
+                您的浏览器不支持视频标签。请更新浏览器或使用其他浏览器观看。
+            </video>
+            <div class="media-overlay">
+                <button class="play-video text-white bg-primary/80 hover:bg-primary w-12 h-12 rounded-full flex items-center justify-center transition">
+                    <i class="fa fa-play"></i>
+                </button>
                             </div>
                         </div>
                     </div>
@@ -496,5 +497,6 @@
     <script src="js/media.js"></script>
 </body>
 </html>
+
 
 
